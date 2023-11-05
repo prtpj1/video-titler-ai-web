@@ -1,12 +1,12 @@
 
 import { Button } from './components/ui/button'
-import { Input } from './components/ui/input'
 import { Label } from './components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './components/ui/select'
 import { Separator } from './components/ui/separator'
 import { Slider } from './components/ui/slider'
 import { Textarea } from './components/ui/textarea'
-import { Wand2, Upload } from 'lucide-react';
+import { Wand2 } from 'lucide-react';
+import { VideoInputForm } from './components/video-input-form'
 
 export function App() {
 
@@ -14,31 +14,17 @@ export function App() {
     <div className='flex flex-col min-h-screen'>
       <header className='border-b flex items-center justify-between px-6 py-3'>Header</header>
       <main className='flex flex-1 gap-6 p-6'>
-        <aside>
+        <aside className='w-80 space-y-6'>
+          <VideoInputForm />
+
+          <Separator />
+
           <form className='space-y-6'>
-            <Label
-              className='aspect-video border border-dashed cursor-pointer flex flex-col items-center justify-center gap-2 relative rounded-md text-muted-foreground hover:bg-primary'
-            >Select a video file to upload...</Label>
-
-            <Separator />
-
-            <div className='space-y-2'>
-              <Label>Key Words</Label>
-              <Input className='text-xs' placeholder='Add keywords mentioned in the video splitted by comma ( , )' />
-            </div>
-
-            <Button className='w-full' type='submit'>
-              Upload to transcription
-              <Upload className='ml-2' size={16} />
-            </Button>
-
-            <Separator />
-
             <div className='space-y-2'>
               <Label>Pre-defined Prompts</Label>
               <Select>
                 <SelectTrigger>
-                  <SelectValue placeholder='Select one prompt...'/>
+                  <SelectValue placeholder='Select one prompt...' />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value='Video-Title'>Titles for a video</SelectItem>
@@ -111,6 +97,6 @@ export function App() {
           </p>
         </section>
       </main>
-    </div>
+    </div >
   )
 }
