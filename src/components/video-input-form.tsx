@@ -18,6 +18,15 @@ const statusMessages = {
     success: 'Success!'
 }
 
+const statusColors = {
+    waiting: "bg-primary",
+    converting: "bg-button_secondary text-background",
+    uploading: "bg-button_secondary text-background",
+    generating: "bg-button_secondary text-background",
+    success: "bg-button_success text-background"
+}
+
+
 export function VideoInputForm() {
     const [videoFile, setVideoFile] = useState<File | null>(null)
     const [status, setStatus] = useState<Status>('waiting')
@@ -141,8 +150,7 @@ export function VideoInputForm() {
             </div>
 
             <Button
-                className='data-[success=true]:bg-emerald-500 data-[success=true]:text-black w-full'
-                data-success={status === 'success'}
+                className={`w-full ${statusColors[status]}`}
                 disabled={status !== "waiting"}
                 type='submit'
             >

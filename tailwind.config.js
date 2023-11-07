@@ -50,6 +50,14 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        button_secondary: {
+          DEFAULT: "hsl(var(--button-secondary))",
+          foreground: "hsl(var(--button-secondary))",
+        },
+        button_success: {
+          DEFAULT: "hsl(var(--button-success))",
+          foreground: "hsl(var(--button-success))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
