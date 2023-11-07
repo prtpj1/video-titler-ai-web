@@ -9,13 +9,21 @@ import { loadFFmpeg } from '@/lib/ffmpeg';
 import { fetchFile } from '@ffmpeg/util';
 import { api } from '@/lib/axios';
 
+type Status = "waiting" | "converting" | "uploading" | "generating" | "success"
+
+const statusMessages = {
+    converting: 'Converting video to audio...',
+    uploading: 'Uploading video...',
+    generating: 'Generating transcription...',
+    success: 'Success!'
+}
+
 export function VideoInputForm() {
     const [videoFile, setVideoFile] = useState<File | null>(null)
+    const [status, setStatus] = useState<Status>('waiting')
     const keyWordsInputRef = useRef<HTMLTextAreaElement>(null)
 
     async function convertVideoToAudio(video: File) {
-        console.log('Convert started');
-
         const ffmpeg = await loadFFmpeg()
 
         await ffmpeg.writeFile('input.mp4', await fetchFile(video))
@@ -63,19 +71,22 @@ export function VideoInputForm() {
         const keyWords = keyWordsInputRef.current?.value
         if (!videoFile) return
 
+        setStatus("converting")
         const audioFile = await convertVideoToAudio(videoFile)
 
         const data = new FormData()
 
         data.append('file', audioFile)
+
+        setStatus("uploading")
         const response = await api.post('/videos', data)
         const videoID = response.data.video.id
 
-        await api.post(`/videos/${videoID}/transcription`, {prompt: keyWords})
+        setStatus("generating")
+        await api.post(`/videos/${videoID}/transcription`, { prompt: keyWords })
 
-        console.log('Video uploaded')
-        
-        
+        setStatus("success")
+
 
     }
 
@@ -122,15 +133,27 @@ export function VideoInputForm() {
                 <Label htmlFor='transcription_keywords'>Key Words</Label>
                 <Textarea
                     className='h20 leading-relaxed resize-none'
+                    disabled={status !== "waiting"}
                     id='transcription_keywords'
                     placeholder='Add keywords mentioned in the video splitted by comma ( , )'
                     ref={keyWordsInputRef}
                 />
             </div>
 
-            <Button className='w-full' type='submit'>
-                Upload to transcription
-                <Upload className='ml-2' size={16} />
+            <Button
+                className='data-[success=true]:bg-emerald-500 data-[success=true]:text-black w-full'
+                data-success={status === 'success'}
+                disabled={status !== "waiting"}
+                type='submit'
+            >
+                {status === "waiting" ? (
+                    <>
+                        Upload to transcription
+                        <Upload className='ml-2' size={16} />
+                    </>
+                ) : (
+                    statusMessages[status]
+                )}
             </Button>
         </form>
     )
