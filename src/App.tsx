@@ -7,8 +7,13 @@ import { Slider } from './components/ui/slider'
 import { Textarea } from './components/ui/textarea'
 import { Wand2 } from 'lucide-react';
 import { VideoInputForm } from './components/video-input-form'
+import { PromptSelect } from './components/prompt-select'
 
 export function App() {
+  function handlePromptSelected(template: string){
+    console.log('🚀  template:', template);
+    
+  }
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -22,15 +27,7 @@ export function App() {
           <form className='space-y-6'>
             <div className='space-y-2'>
               <Label>Pre-defined Prompts</Label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder='Select one prompt...' />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value='Video-Title'>Titles for a video</SelectItem>
-                  <SelectItem value='Video-Title'>Description for a video</SelectItem>
-                </SelectContent>
-              </Select>
+              <PromptSelect onPromptSelected={handlePromptSelected} />
             </div>
 
             <Separator />
