@@ -3,16 +3,16 @@ import { Button } from './components/ui/button'
 import { Label } from './components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './components/ui/select'
 import { Separator } from './components/ui/separator'
-import { Slider } from './components/ui/slider'
 import { Textarea } from './components/ui/textarea'
 import { Wand2 } from 'lucide-react';
 import { VideoInputForm } from './components/video-input-form'
 import { PromptSelect } from './components/prompt-select'
+import { TemperatureSlider } from './components/temperature-slider'
 
 export function App() {
+
   function handlePromptSelected(template: string){
     console.log('🚀  template:', template);
-    
   }
 
   return (
@@ -49,21 +49,7 @@ export function App() {
 
             <Separator />
 
-            <div className='space-y-4'>
-              <div className='flex justify-between items-center'>
-                <Label>Temperature</Label>
-                <span className='text-muted-foreground text-xs'>0.5</span>
-              </div>
-              <Slider
-                defaultValue={[0.5]}
-                min={0}
-                max={1}
-                step={0.1}
-              />
-              <span className='block italic leading-relaxed text-muted-foreground text-xs'>
-                Higher values means more creative results, but with more possibility of errors
-              </span>
-            </div>
+            <TemperatureSlider />
 
             <Separator />
 
