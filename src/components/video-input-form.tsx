@@ -26,8 +26,12 @@ const statusColors = {
     success: "bg-button_success text-background"
 }
 
+interface VideoInputFormProps {
+    onVideoUploaded: (id: string) => void
+    onTranscriptionChanged: (transcription: string) => void
+}
 
-export function VideoInputForm() {
+export function VideoInputForm(props: VideoInputFormProps) {
     const [videoFile, setVideoFile] = useState<File | null>(null)
     const [status, setStatus] = useState<Status>('waiting')
     const keyWordsInputRef = useRef<HTMLTextAreaElement>(null)
@@ -89,14 +93,18 @@ export function VideoInputForm() {
 
         setStatus("uploading")
         const response = await api.post('/videos', data)
-        const videoID = response.data.video.id
+        const videoId = response.data.video.id
 
         setStatus("generating")
-        await api.post(`/videos/${videoID}/transcription`, { prompt: keyWords })
+        const transcriptionResponse = await api.post(`/videos/${videoId}/transcription`, { prompt: keyWords })
+
+        const transcriptionText = transcriptionResponse.data.transcription;
+        const transcriptionCapitalized = transcriptionText.charAt(0).toUpperCase() + transcriptionText.slice(1);
 
         setStatus("success")
-
-
+        
+        props.onVideoUploaded(videoId)
+        props.onTranscriptionChanged(transcriptionCapitalized)
     }
 
     const previewURL = useMemo(() => {

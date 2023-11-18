@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { Label } from './ui/label';
 import { Slider } from './ui/slider';
 
-export function TemperatureSlider() {
+interface TemperatureChangeProps{
+    onTemperatureChange: (value: number) => void
+}
+
+export function TemperatureSlider(props:TemperatureChangeProps) {
     const [temperature, setTemperature] = useState(0.5)
 
     return (
@@ -17,7 +21,10 @@ export function TemperatureSlider() {
                 max={1}
                 step={0.1}
                 value={[temperature]}
-                onValueChange={value => setTemperature(value[0])}
+                onValueChange={value => {
+                    setTemperature(value[0]);
+                    props.onTemperatureChange(value[0]);
+                }}
             />
             <span className='block italic leading-relaxed text-muted-foreground text-xs'>
                 Higher values means more creative results, but with more possibility of errors
