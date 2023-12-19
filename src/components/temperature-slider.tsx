@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { Label } from './ui/label';
 import { Slider } from './ui/slider';
+import { useTranslation } from 'react-i18next';
 
-interface TemperatureChangeProps{
+interface TemperatureChangeProps {
     onTemperatureChange: (value: number) => void
 }
 
-export function TemperatureSlider(props:TemperatureChangeProps) {
+export function TemperatureSlider(props: TemperatureChangeProps) {
     const [temperature, setTemperature] = useState(0.5)
+    const { t } = useTranslation();
 
     return (
         <div className='space-y-4'>
             <div className='flex justify-between items-center'>
-                <Label>Temperature</Label>
+                <Label>{t('title.temperature')}</Label>
                 <span className='text-muted-foreground text-xs'>{temperature}</span>
             </div>
             <Slider
@@ -27,7 +29,7 @@ export function TemperatureSlider(props:TemperatureChangeProps) {
                 }}
             />
             <span className='block italic leading-relaxed text-muted-foreground text-xs'>
-                Higher values means more creative results, but with more possibility of errors
+                {t('text.temperature')}
             </span>
         </div>
     )

@@ -1,0 +1,30 @@
+{
+    "translation": {
+        "title": {
+            "keyWords": "Palavras chave",
+            "prePrompt": "Prompts Pre-definidos",
+            "models": "Modelos",
+            "temperature": "Temperatura"
+        },
+        "select": {
+            "prompt": "Selecione um prompt...",
+            "video": "Selecione um video para carregar..."
+        },
+        "button": {
+            "uploadToTranscription": "Carregar para transcrição",
+            "generate": "Gerar"
+        },
+        "placeholder": {
+            "keyWords": "Escreva palavras chave mencionadas no video separadas por vírgula ( , )",
+            "transcription": "Após converter o seu video em um arquivo de audio, a transcrição gerada será exibida aqui...\n\nConsidere que a transcrição gerada será no idioma original do video",
+            "prompt": "Escreva suas instruções para a IA aqui ou selecione no menu lateral um prompt pre-definido (Titulo ou Descrição)!",
+            "result": "O resultado gerado pela IA usando as suas instruções acima será exibido aqui..."
+        },
+        "text": {
+            "models": "Você poderá escolher outros modelos no futuro",
+            "rememberStart": "Lembre-se que você pode usar a variável ",
+            "rememberEnd": "no seu prompt para adicionar o conteúdo da transcrição do video carregado!",
+            "temperature": "Valores mais altos significam resultados mais criativos, porém com maior possibilidade de erros."
+        }
+    }
+}

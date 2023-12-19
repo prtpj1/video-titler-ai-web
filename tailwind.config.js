@@ -6,7 +6,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -16,15 +16,21 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        "tech": "url('./assets/bg-tech.jpg')",
+      },
       colors: {
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
         background: "var(--background)",
         foreground: "var(--foreground)",
+        highlight: "var(--highlight)",
+        success: "var(--success)",
         primary: {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",
+          light: "var(--primary-light)",
         },
         secondary: {
           DEFAULT: "var(--secondary)",
@@ -50,13 +56,14 @@ module.exports = {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
-        button_secondary: {
-          DEFAULT: "var(--button-secondary)",
-          foreground: "var(--button-secondary)",
+        dark_gradient: {
+          start: "var(--dark-gradient-start)",
+          end: "var(--dark-gradient-end)",
         },
-        button_success: {
-          DEFAULT: "var(--button-success)",
-          foreground: "var(--button-success)",
+        glass_panel: {
+          start: "var(--bg-glass-panel-start)",
+          end: "var(--bg-glass-panel-end)",
+          border: "var(--border-glass-panel)",
         },
       },
       borderRadius: {
@@ -81,4 +88,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

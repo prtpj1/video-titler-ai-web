@@ -8,6 +8,8 @@ import { ChangeEvent, FormEvent, useMemo, useRef, useState } from 'react';
 import { loadFFmpeg } from '@/lib/ffmpeg';
 import { fetchFile } from '@ffmpeg/util';
 import { api } from '@/lib/axios';
+import { useTranslation } from 'react-i18next';
+
 
 type Status = "waiting" | "converting" | "uploading" | "generating" | "success"
 
@@ -19,11 +21,11 @@ const statusMessages = {
 }
 
 const statusColors = {
-    waiting: "bg-primary",
-    converting: "bg-button_secondary text-background",
-    uploading: "bg-button_secondary text-background",
-    generating: "bg-button_secondary text-background",
-    success: "bg-button_success text-background"
+    waiting: "bg-gradient-to-t from-primary to-primary-light",
+    converting: "bg-highlight text-background",
+    uploading: "bg-highlight text-background",
+    generating: "bg-highlight text-background",
+    success: "bg-success text-background"
 }
 
 interface VideoInputFormProps {
@@ -35,6 +37,7 @@ export function VideoInputForm(props: VideoInputFormProps) {
     const [videoFile, setVideoFile] = useState<File | null>(null)
     const [status, setStatus] = useState<Status>('waiting')
     const keyWordsInputRef = useRef<HTMLTextAreaElement>(null)
+    const { t } = useTranslation();
 
     async function convertVideoToAudio(video: File) {
         const ffmpeg = await loadFFmpeg()
@@ -102,9 +105,9 @@ export function VideoInputForm(props: VideoInputFormProps) {
         const transcriptionCapitalized = transcriptionText.charAt(0).toUpperCase() + transcriptionText.slice(1);
 
         setStatus("success")
-        
+
         props.onVideoUploaded(videoId)
-        props.onTranscriptionChanged(transcriptionCapitalized)
+        props.onTranscriptionChanged(`Video transcription:\n${transcriptionCapitalized}`)
     }
 
     const previewURL = useMemo(() => {
@@ -119,7 +122,7 @@ export function VideoInputForm(props: VideoInputFormProps) {
     return (
         <form className='space-y-6' onSubmit={handleUploadVideo}>
             <Label
-                className='aspect-video border border-dashed cursor-pointer flex flex-col items-center justify-center gap-2 relative rounded-md text-muted-foreground hover:bg-primary'
+                className='aspect-video bg-gradient-to-t from-indigo-300/10 to-indigo-700/60 backdrop-blur-sm border border-dashed rounded-md cursor-pointer flex flex-col items-center justify-center gap-2 text-muted-foreground hover:bg-indigo-500/20'
                 htmlFor='video'
             >
                 {previewURL ? (
@@ -131,7 +134,7 @@ export function VideoInputForm(props: VideoInputFormProps) {
                 ) : (
                     <>
                         <FileVideo size={24} />
-                        Select a video file to upload...
+                        {t('select.video')}
                     </>
                 )}
 
@@ -144,15 +147,15 @@ export function VideoInputForm(props: VideoInputFormProps) {
                 type='file'
             />
 
-            <Separator />
+            <Separator className='bg-gray-50/30' />
 
             <div className='space-y-2'>
-                <Label htmlFor='transcription_keywords'>Key Words</Label>
+                <Label htmlFor='transcription_keywords'>{t('title.keyWords')}</Label>
                 <Textarea
-                    className='h20 leading-relaxed resize-none'
+                    className='bg-gradient-to-tr from-dark_gradient-start to-dark_gradient-end backdrop-blur-sm border-2 border-glass_panel-border h20 leading-relaxed resize-none'
                     disabled={status !== "waiting"}
                     id='transcription_keywords'
-                    placeholder='Add keywords mentioned in the video splitted by comma ( , )'
+                    placeholder={t('placeholder.keyWords')}
                     ref={keyWordsInputRef}
                 />
             </div>
@@ -164,7 +167,7 @@ export function VideoInputForm(props: VideoInputFormProps) {
             >
                 {status === "waiting" ? (
                     <>
-                        Upload to transcription
+                        {t('button.uploadToTranscription')}
                         <Upload className='ml-2' size={16} />
                     </>
                 ) : (

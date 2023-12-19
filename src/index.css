@@ -2,32 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+body::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 @layer base {
   :root {
+    --accent: hsl(215 27.9% 16.9%);
+    --accent-foreground: hsl(210 20% 98%);
     --background: hsl(224 71.4% 4.1%);
-    --foreground: hsl(210 20% 98%);
+    --bg-glass-panel-start: hsla(0, 0%, 0%, 0.4);
+    --bg-glass-panel-end: hsla(0, 0%, 0%, 0.1);
+    --border-glass-panel: hsla(60, 9%, 98%, 0.15);
+    --dark-gradient-start:hsla(24, 10%, 10%, 0.5);
+    --dark-gradient-end:hsla(0, 0%, 27%, 0.1);
+    --border: hsla(60, 9%, 98%, 0.15);
+    --highlight: hsl(43, 100%, 52%);
+    --success: hsl(156, 100%, 48%);
     --card: hsl(224 71.4% 4.1%);
     --card-foreground: hsl(210 20% 98%);
+    --destructive: hsl(0 62.8% 30.6%);
+    --destructive-foreground: hsl(210 20% 98%);
+    --foreground: hsl(210 20% 98%);
+    --input: hsl(215 27.9% 16.9%);
+    --muted: hsl(215 27.9% 16.9%);
+    --muted-foreground: hsl(217.9 10.6% 64.9%);
     --popover: hsl(224 71.4% 4.1%);
     --popover-foreground: hsl(210 20% 98%);
     --primary: hsl(255, 100%, 34%);
+    --primary-light: hsl(255, 75%, 48%);
     --primary-foreground: hsl(210 20% 98%);
+    --radius: 0.5rem;
+    --ring: hsl(255, 100%, 34%);
     --secondary: hsl(215 27.9% 16.9%);
     --secondary-foreground: hsl(210 20% 98%);
-    --muted: hsl(215 27.9% 16.9%);
-    --muted-foreground: hsl(217.9 10.6% 64.9%);
-    --accent: hsl(215 27.9% 16.9%);
-    --accent-foreground: hsl(210 20% 98%);
-    --destructive: hsl(0 62.8% 30.6%);
-    --destructive-foreground: hsl(210 20% 98%);
-    --border: hsl(215 27.9% 16.9%);
-    --input: hsl(215 27.9% 16.9%);
-    --ring: hsl(255, 100%, 34%);
-    --button-secondary: hsl(43, 100%, 52%);
-    --button-success: hsl(156, 100%, 48%);
-
-    --radius: 0.5rem;
   }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @layer base {
