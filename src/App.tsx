@@ -16,6 +16,7 @@ import { TemperatureSlider } from "./components/temperature-slider";
 import { useState } from "react";
 import { useCompletion } from "ai/react";
 import imgHeader from './assets/video-titler-1.png';
+import imgHeaderMini from './assets/video-titler-mini.png';
 import LanguageSelector from './components/language-selector';
 import { useTranslation } from 'react-i18next';
 
@@ -47,7 +48,8 @@ export function App() {
         <LanguageSelector />
       </nav>
       <header className="bg-gradient-to-bl from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border rounded-md flex items-center justify-center h-32 w-auto mt-6 mx-6">
-        <img className='h-full' src={imgHeader} alt='Video Titler Header Picture' />
+        <img className='hidden sm:block h-auto' src={imgHeader} alt='Video Titler Header Picture' />
+        <img className='mini:block sm:hidden h-full' src={imgHeaderMini} alt='Video Titler Header Picture' />
       </header>
       <main className="flex flex-1 gap-6 p-6">
         <aside className="bg-gradient-to-tr from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border h-auto w-80 rounded-md p-6 space-y-6">
