@@ -51,7 +51,7 @@ export function App() {
         <img className='hidden sm:block h-auto' src={imgHeader} alt='Video Titler Header Picture' />
         <img className='mini:block sm:hidden h-full' src={imgHeaderMini} alt='Video Titler Header Picture' />
       </header>
-      <main className="flex flex-1 gap-6 p-6">
+      <main className="grid grid-cols-1 sm:flex sm:flex-1 gap-6 p-6">
         <aside className="bg-gradient-to-tr from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border h-auto w-80 rounded-md p-6 space-y-6">
           <VideoInputForm
             onVideoUploaded={setVideoId}
@@ -102,9 +102,9 @@ export function App() {
           </form>
         </aside>
 
-        <section className="flex flex-col flex-1 gap-4">
-          <div className="flex-1 gap-4 grid grid-cols-3" id="main">
-            <div className="relative col-span-1" id="div1">
+        <section className="flex sm:flex-col flex-1 gap-4">
+          <div className="flex-1 gap-4 grid grid-cols-1 lg:grid-cols-3" id="main">
+            <div className="relative col-span-2 lg:col-span-1" id="div1">
               <Textarea
                 className="absolute inset-0 bg-gradient-to-bl from-glass_panel-start to-glass_panel-end backdrop-blur-sm border-2 border-border rounded-md cursor-not-allowed leading-relaxed no-scrollbar p-4 resize-none text-muted-foreground whitespace-pre-wrap"
                 placeholder={t('placeholder.transcription')}
