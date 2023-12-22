@@ -11,16 +11,16 @@ export function LanguageSelector() {
     function handleChangeLanguage() {
         const newLanguage = !isEnglish
         setIsEnglish(newLanguage)
-        i18n.changeLanguage(newLanguage ? 'br' : 'en')
+        i18n.changeLanguage(newLanguage ? 'en' : 'br')
     }
 
     return (
         <div className='absolute flex items-center justify-around w-24 right-10 top-1 z-10'>
-            <Label htmlFor='language'>EN</Label>
+            <Label htmlFor='language'>BR</Label>
             <Switch checked={isEnglish} id='language' onClick={handleChangeLanguage}>
                 {isEnglish ? 'en' : 'br'}
             </Switch>
-            <Label htmlFor='language'>BR</Label>
+            <Label htmlFor='language'>EN</Label>
         </div>
     )
 }

@@ -47,10 +47,12 @@ export function App() {
       <nav>
         <LanguageSelector />
       </nav>
+
       <header className="bg-gradient-to-bl from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border rounded-md flex items-center justify-center h-32 w-auto mt-6 mx-6">
         <img className='hidden sm:block h-auto' src={imgHeader} alt='Video Titler Header Picture' />
         <img className='mini:block sm:hidden h-full' src={imgHeaderMini} alt='Video Titler Header Picture' />
       </header>
+
       <main className="grid grid-cols-1 sm:flex sm:flex-1 gap-6 p-6">
         <aside className="bg-gradient-to-tr from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border h-auto w-80 rounded-md p-6 space-y-6">
           <VideoInputForm
@@ -138,6 +140,7 @@ export function App() {
             {t('text.rememberEnd')}
           </p>
         </section>
+
       </main>
     </div>
   );
