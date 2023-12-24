@@ -48,13 +48,13 @@ export function App() {
         <LanguageSelector />
       </nav>
 
-      <header className="bg-gradient-to-bl from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border rounded-md flex items-center justify-center h-32 w-auto mt-6 mx-6">
+      <header className="bg-gradient-to-bl from-glass_panel-start to-glass_panel-end backdrop-blur-sm border-2 border-border rounded-md flex items-center justify-center h-32 w-auto mt-6 mx-6">
         <img className='hidden sm:block h-auto' src={imgHeader} alt='Video Titler Header Picture' />
         <img className='mini:block sm:hidden h-full' src={imgHeaderMini} alt='Video Titler Header Picture' />
       </header>
 
       <main className="grid grid-cols-1 sm:flex sm:flex-1 gap-6 p-6">
-        <aside className="bg-gradient-to-tr from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border h-auto w-80 rounded-md p-6 space-y-6">
+        <aside className="bg-gradient-to-tr from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border h-auto rounded-md p-6 space-y-6 sm:h-max sm:w-80">
           <VideoInputForm
             onVideoUploaded={setVideoId}
             onTranscriptionChanged={setTranscription}
@@ -104,29 +104,26 @@ export function App() {
           </form>
         </aside>
 
-        <section className="flex sm:flex-col flex-1 gap-4">
-          <div className="flex-1 gap-4 grid grid-cols-1 lg:grid-cols-3" id="main">
-            <div className="relative col-span-2 lg:col-span-1" id="div1">
+        <section className="flex flex-col gap-5 sm:flex-1">
+          <div className="flex flex-col gap-5 sm:flex-1 sm:grid sm:grid-cols-1 lg:grid-cols-3" id="main">
+            <div className="sm:relative sm:col-span-2 lg:col-span-1" id="div1">
               <Textarea
-                className="absolute inset-0 bg-gradient-to-bl from-glass_panel-start to-glass_panel-end backdrop-blur-sm border-2 border-border rounded-md cursor-not-allowed leading-relaxed no-scrollbar p-4 resize-none text-muted-foreground whitespace-pre-wrap"
+                className="bg-gradient-to-bl from-glass_panel-start to-glass_panel-end backdrop-blur-sm border-2 border-border rounded-md cursor-not-allowed leading-relaxed no-scrollbar p-4 text-muted-foreground whitespace-pre-wrap h-60 sm:absolute sm:inset-0 sm:resize-none sm:h-auto sm:w-auto"
                 placeholder={t('placeholder.transcription')}
                 value={transcription}
                 id="t1"
               />
             </div>
-            <div
-              className="flex flex-col gap-4 flex-1 col-span-2 h-full"
-              id="div2"
-            >
+            <div className="flex flex-col gap-5 sm:flex-1 sm:col-span-2 sm:h-full" id="div2">
               <Textarea
-                className="flex-auto bg-gradient-to-bl from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border rounded-md leading-relaxed no-scrollbar p-4 resize-none text-highlight"
+                className="bg-gradient-to-bl from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border rounded-md leading-relaxed no-scrollbar p-4 text-highlight h-60 sm:flex-auto sm:resize-none"
                 onChange={handleInputChange}
                 placeholder={t('placeholder.prompt')}
                 value={input}
                 id="t2"
               />
               <Textarea
-                className="flex-1 flex-grow-2 bg-gradient-to-bl from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border rounded-md cursor-not-allowed leading-relaxed no-scrollbar p-4 resize-none"
+                className="bg-gradient-to-bl from-glass_panel-start to-glass_panel-end  backdrop-blur-sm border-2 border-border rounded-md cursor-not-allowed leading-relaxed no-scrollbar p-4 h-60 sm:flex-1 flex-grow-2 sm:resize-none"
                 placeholder={t('placeholder.result')}
                 readOnly
                 value={completion}
