@@ -15,7 +15,7 @@
 <a href="#neste-evento-aprendi-e-coloquei-em-prática">Aprendizado</a> •
 <a href="#o-que-adicionei-ao-app-após-finalizar-o-evento">Mudanças pós-evento</a> •
 <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a> •
-<a href="#como-rodar-a-aplicação">Rodar a Aplicação</a>
+<a href="#como-rodar-a-aplicação">Como Rodar a Aplicação</a>
 </p>
 <hr/>
 
@@ -92,6 +92,7 @@ For this, access the [back-end](https://github.com/prtpj1/video-titler-ai-api) a
 ⚠️Wait for the application to open in your browser. If it doesn't, enter the following in your browser's address bar: `http://localhost:4173/`
 </br>
 </br>
+
 _*Note: If you have any difficulty with the instructions and want to give feedback, send me a message*_
 
 <hr/>
@@ -170,4 +171,5 @@ Para isso, acesse o [back-end](https://github.com/prtpj1/video-titler-ai-api) e 
 ⚠️Aguarde a aplicação abrir no seu navegador. Caso não ocorra, coloque na barra de endereços do seu navegador: `http://localhost:4173/`
 </br>
 </br>
+
 _*OBS: Se tiver alguma dificuldade com as instruções e quiser dar um feedback me mande uma mensagem*_
